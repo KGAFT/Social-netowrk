@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+
+</form>
+<h1 th:text="${username}">UserName</h1>
+
+<br>
+<br>
+<form method="post" action="Posts">
+    <input type="text" name="PostName" placeholder="Name of post">
+    <input type="text" name="PostInfo" placeholder="Info of post">
+    <input type="submit" value="create post">
+</form>
+<br>
+<br>
+<div>Posts: </div>
+<div th:each="Post : ${posts}">
+    <h3>Post name: </h3>
+    <br>
+    <h4 th:text="${Post.getPostname()}"></h4>
+    <br>
+    <h3>Post info</h3>
+    <br>
+    <h4 th:text="${Post.getPostinfo()}"></h4>
+    <form action="/deletePost" method="post">
+        <input type = "hidden" name="id" th:value="${Post.getId()}">
+        <input type="submit" value="delete">
+    </form>
+    <form action="/editPost" method="get">
+        <input type="hidden" name="id" th:value="${Post.getId()}">
+        <input type="submit" value="edit">
+    </form>
+    <br>
+
+</div>
+</body>
+</html>

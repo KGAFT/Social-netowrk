@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<form action="User" method="get">
+    <input type="submit" value="Go to my account">
+</form>
+<h1>Welcome to mainpage</h1>
+<h2>New Posts</h2>
+<div th:each="Post : ${posts}">
+    <h3>Post owner: </h3>
+    <br>
+    <h4 th:text="${Post.getOwner()}"></h4>
+    <br>
+    <h3>Post name: </h3>
+    <h4 th:text="${Post.getPostname()}"></h4>
+    <br>
+    <h3>Post info: </h3>
+    <br>
+    <h4 th:text="${Post.getPostinfo()}"></h4>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form action="/editPost" method="post">
+    <input type="text" name="postName" placeholder="Please enter the new post name">
+    <input type="text" name="postInfo" placeholder="Please enter post info">
+    <input type="hidden" name="id" th:value="${id}">
+    <br>
+    <input type="submit" value="edit">
+</form>
+</body>
+</html>
