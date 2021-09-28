@@ -9,3 +9,11 @@ create table network.posts
     postinfo varchar not null,
     owner    varchar not null
 );
+
+create table network.user_messages
+(
+	id serial,
+	message varchar not null,
+	sender varchar not null,
+	receiver varchar not null
+);

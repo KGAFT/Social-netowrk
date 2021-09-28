@@ -10,6 +10,6 @@ public class registrationController {
     @GetMapping("/registration")
     public String registrationPage(){
         return "registration";
-    }
+    } //Comming soon
 
 }

@@ -15,9 +15,40 @@
     <input type="text" name="PostInfo" placeholder="Info of post">
     <input type="submit" value="create post">
 </form>
+<form method="post" action="/message">
+    <input type="text" name="messageText" placeholder="message text">
+    <input type="text" name="messageReceiver" placeholder="message receiver">
+    <input type="submit" value="send message">
+</form>
 <br>
+<h2>Sended messages: </h2>
+<div th:each="Message : ${sended_messages}">
+    <h3>Sended to:</h3>
+    <br>
+    <h4 th:text="${Message.getReceiver()}"></h4>
+    <br>
+    <h3>Text: </h3>
+    <br>
+    <h4 th:text="${Message.getMessage()}"></h4>
+    <form action="/deleteMessage" method="post">
+        <input type="submit" value="delete">
+        <input type="hidden" name="id" th:value="${Message.getId()}">
+    </form>
+</div>
 <br>
-<div>Posts: </div>
+<h2>New messages: </h2>
+<div th:each="Message : ${Messages}">
+    <h3>Message sender:</h3>
+    <br>
+    <h4 th:text="${Message.getSender()}"></h4>
+    <br>
+    <h3>Message: </h3>
+    <br>
+    <h4 th:text="${Message.getMessage()}"></h4>
+
+</div>
+<br>
+<h2>Posts: </h2>
 <div th:each="Post : ${posts}">
     <h3>Post name: </h3>
     <br>
@@ -27,7 +58,7 @@
     <br>
     <h4 th:text="${Post.getPostinfo()}"></h4>
     <form action="/deletePost" method="post">
-        <input type = "hidden" name="id" th:value="${Post.getId()}">
+        <input type="hidden" name="id" th:value="${Post.getId()}">
         <input type="submit" value="delete">
     </form>
     <form action="/editPost" method="get">
@@ -35,7 +66,6 @@
         <input type="submit" value="edit">
     </form>
     <br>
-
 </div>
 </body>
 </html>
